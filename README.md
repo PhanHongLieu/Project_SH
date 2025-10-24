@@ -60,7 +60,9 @@ JWT_SECRET=<your_jwt_secret_key>
 
 5. Khởi chạy hệ thống bằng Docker
 docker-compose up --build
-
+![alt text](img_readme/image1.png)
+![alt text](img_readme/image2.png)
+![alt text](img_readme/image3.png)
 
 Sau khi khởi động thành công, các service hoạt động tại:
 
@@ -108,28 +110,34 @@ Lưu thông tin đơn hàng vào MongoDB (orderdb)
 ### Auth Service - Port 3000
 
 POST /auth/register → Đăng ký tài khoản
-![alt text](img_readme/image-1.png)
-
-check in database
-![alt text](img_readme/image-2.png)
+![alt text](img_readme/image4.png)
+![alt text](img_readme/image5.png)
 
 POST /auth/login → Đăng nhập, nhận JWT token
-![alt text](img_readme/image-3.png)
+![alt text](img_readme/image6.png)
 
 ### Product Service - Port 3001
 
 POST /products/api/products → Tạo sản phẩm (cần JWT token)
-![alt text](img_readme/image-4.png)
+![alt text](img_readme/image7.png)
 
 check in database
-![alt text](img_readme/image-5.png)
-
-GET /products/api/products → Lấy danh sách sản phẩm
-![alt text](img_readme/image-6.png)
+![alt text](img_readme/image8.png)
 
 POST products/api/products/buy/ → Đặt hàng sản phẩm
-![alt text](img_readme/image-7.png)
+![alt text](img_readme/image9.png)
 
 ### Order Service - Port 3002
 Tự động nhận dữ liệu đơn hàng được gửi từ Product Service thông qua RabbitMQ và lưu trữ vào MongoDB.
-![alt text](img_readme/image-8.png)
+![alt text](img_readme/image10.png)
+
+### Find Product By Id - Port 3001
+![alt text](img_readme/image11.png)
+
+### Git Action - CI/CD
+![alt text](img_readme/image12.png)
+![alt text](img_readme/image13.png)
+![alt text](img_readme/image14.png)
+![alt text](img_readme/image15.png)
+![alt text](img_readme/image16.png)
+![alt text](img_readme/image17.png)

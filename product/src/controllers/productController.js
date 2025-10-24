@@ -1,8 +1,8 @@
 const Product = require("../models/product");
 const messageBroker = require("../utils/messageBroker");
 const uuid = require('uuid'); 
-const ProductsService = require("../services/productsService"); 
- 
+const ProductService = require("../services/productsService");
+
 /**
  * Class to hold the API implementation for the product services
  */
@@ -12,9 +12,8 @@ class ProductController {
     this.createOrder = this.createOrder.bind(this); 
     this.getOrderStatus = this.getOrderStatus.bind(this);
     this.ordersMap = new Map();
+    this.productService = new ProductService();
     this.getProductById = this.getProductById.bind(this);
-    this.productsService = new ProductsService();
-
   }
 
   async createProduct(req, res, next) {
@@ -112,22 +111,11 @@ class ProductController {
       res.status(500).json({ message: "Server error" });
     }
   }
-async getProductById(req, res, next) {
-  const product = await this.productsService.getProductById(req.params.id);
-  if (!product) return res.status(404).json({ message: "Product not found" });
-  return res.status(200).json(product);
-}
-
-// async getProductsById(req,res,next)
-//   {
-//     const {id}= req.params;
-//     const products= await this.ProductService.getProductsById(id);
-//     if(!products)
-//     {
-//       return res.status(404).json({message: "Product not found"});
-//     }
-//     res.status(200).json(products);
-//   }
+  async getProductById(req, res, next){
+    const product = await this.productService.getProductById(req.params.id);
+    if (!product) return res.status(404).json({message: "Product not found"});
+    return res.status(200).json(product);
+  }
 }
 
 module.exports = ProductController;
